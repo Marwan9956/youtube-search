@@ -1,1 +1,13 @@
-<p>search works!</p>
+<div class="row align-items-center justify-content-between search-component">
+    <div class="col-2">
+        <p class="text-justify">Youtube</p>
+    </div>
+    <form class="col-8 d-flex">
+        <div class=" col-10 flex-fill">
+            <input type="text" class="form-control" name="search" id="search" [(ngModel)] = "searchQuery">
+        </div>
+        <div class=" col-2 flex-fill">
+            <button type="submit" class="btn btn-outline-dark" (click)="onClickSearch()">Search</button>
+        </div>
+    </form>
+</div>

@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'youtube-search';
+  changes = false;
+
+  onChange(event:string):void{
+    console.log(event);
+    this.changes = true;
+    //this.changes = false;
+  }
+
+  resetValue(event:any):void{
+    this.changes = false;
+    console.log("it is reset");
+  }
 }

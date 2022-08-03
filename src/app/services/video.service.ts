@@ -17,28 +17,40 @@ export class VideoService {
 
   constructor(private http : HttpClient) { 
     this.url = "https://www.googleapis.com/youtube/v3/search";
-    this.apiKey = "AIzaSyA2iJNlC3c3DUG8tgBJ5scs9d7zX89OWME";  
-    this.query = "ufc knockouts women";
+    this.apiKey = "AIzaSyA2iJNlC3c3DUG8tgBJ5scs9d7zX89OWME"; 
+     
+    this.query = "";
   }
 
+  /**
+   * 
+   * @param query string what you want to search for here 
+   */
   setQuery(query :string){
     this.query = query;
   }
 
+  /**
+   * method processing search functinality for youtube and return observable to subscribe 
+   * @returns Observable  
+   */
   searchVid() : Observable<IVideo>{
+    console.log(this.query);
     this.query = encodeURIComponent(this.query);
 
-    
+    /**
+     * Youtube Param construct 
+     */
     const parameters : string = [
       `q=${this.query}`,
       `key=${this.apiKey}`,
       `part=snippet`,
       `type=video`,
-      `maxResults=10`
+      `maxResults=8`
     ].join("&");
     
     const queryURL = `${this.url}?${parameters}`;
-    console.log(queryURL);
+    
     return this.http.get<IVideo>(queryURL);
   }
 }

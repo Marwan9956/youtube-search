@@ -1,3 +1,20 @@
-<p>{{data | json}}</p>
-
-<!-- <img src="{{data[0].thumbnailUrl}}"> -->
+<div class="row video-collection">
+  <!-- Loading spinner -->
+  <div *ngIf="isLoading" class="d-flex align-items-center justify-content-center">
+    <strong>Loading...</strong>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  </div>
+  
+  <ng-container *ngIf="!isLoading">
+    <div *ngFor="let item of data;" class="card  col-3 " >
+        <img src="{{item.thumbnailUrl}}" class="card-img-top" alt="{{item.title}}">
+        <div class="card-body">
+          <h5 class="card-title">{{item.title}}</h5>
+          <p class="card-text">{{item.description}}</p>
+          <a target="_blank" href="{{item.videoUrl + item.id}}" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+  </ng-container>
+  
+ 
+</div>
